@@ -1,11 +1,13 @@
 Links
 
-Página da documentação - https://docs.docker.com/
-Download e instalação  - https://docs.docker.com/get-started/get-docker/
-Get started          - https://docs.docker.com/get-started/workshop/
-Docker hub - https://hub.docker.com/r/dockersamples/static-site
-Imagem do Node no Docker Hub - https://hub.docker.com/_/node
-Documentação do Docker - https://docs.docker.com/reference/dockerfile/
+Página da documentação        - https://docs.docker.com/
+Download e instalação         - https://docs.docker.com/get-started/get-docker/
+Get started                   - https://docs.docker.com/get-started/workshop/
+Docker hub                    - https://hub.docker.com/r/dockersamples/static-site
+Imagem do Node no Docker Hub  - https://hub.docker.com/_/node
+Documentação do Docker        - https://docs.docker.com/reference/dockerfile/
+Home do Docker Hub            - https://hub.docker.com/
+
 
 Codigos:
 
@@ -22,7 +24,7 @@ docker pause 'ID'           => pausamos o container
 docker unpause 'ID'         => despausar o container 
 docker rm 'ID'              => container removido
 docker run -d dockersamples/static-site => container baseado nesta imagem seja executado sem impactar nosso terminal. 
-docker rm 'ID' --force => interromper e remover o container
+docker rm 'ID' --force      => interromper e remover o container
 docker run -d -P dockersamples/static-site 
 docker port 'ID'            =>  revela como está o mapeamento de portas do container em relação ao host.
 docker run -d -p 8080:80 dockersamples/static-site 
@@ -37,7 +39,8 @@ docker run -d danielartine/app-node:1.1
 docker build –t danielartine/app-node:1.2 .
 docker run -d danielartine/app-node:1.2
 docker run –p 9090:6000 –d danielartine/app-node:1.2
-
+docker login -u aluradocker  => autenticar a conta
+docker push danielartine/app-node:1.0 => enviará automaticamente a nossa imagem para o Docker Hub
 
 
 
@@ -48,140 +51,3 @@ http://localhost:49154
 localhost:8080
 localhost:8081
 localhost:9090
-
-
-
-# Docker Guia Rápido
-
-## Links
-
-- [Documentação Oficial do Docker](https://docs.docker.com/)
-- [Download e Instalação](https://docs.docker.com/get-started/get-docker/)
-- [Guia Inicial do Docker](https://docs.docker.com/get-started/workshop/)
-- [Docker Hub - Static Site Sample](https://hub.docker.com/r/dockersamples/static-site)
-- [Imagem do Node no Docker Hub](https://hub.docker.com/_/node)
-- [Documentação sobre Dockerfile](https://docs.docker.com/reference/dockerfile/)
-
----
-
-## Comandos Essenciais
-
-### Testando o Docker
-```bash
-docker run hello-world
-```
-Verifica se o Docker está instalado e funcionando corretamente.
-
-### Trabalhando com Containers
-- **Iniciar um container:**
-  ```bash
-  docker run ubuntu
-  ```
-- **Baixar uma imagem:**
-  ```bash
-  docker pull ubuntu
-  ```
-- **Listar containers em execução:**
-  ```bash
-  docker ps
-  ```
-- **Listar todos os containers:**
-  ```bash
-  docker container ls -a
-  ```
-- **Interromper um container:**
-  ```bash
-  docker stop <ID>
-  ```
-- **Reiniciar um container:**
-  ```bash
-  docker start <ID>
-  ```
-- **Interagir com um container:**
-  ```bash
-  docker exec -it <ID> bash
-  ```
-- **Pausar um container:**
-  ```bash
-  docker pause <ID>
-  ```
-- **Despausar um container:**
-  ```bash
-  docker unpause <ID>
-  ```
-- **Remover um container:**
-  ```bash
-  docker rm <ID>
-  ```
-- **Forçar a remoção de um container:**
-  ```bash
-  docker rm <ID> --force
-  ```
-- **Interromper todos os containers em execução:**
-  ```bash
-  docker stop $(docker container ls -q)
-  ```
-
-### Gerenciando Imagens
-- **Visualizar as imagens locais:**
-  ```bash
-  docker images
-  ```
-- **Inspecionar uma imagem:**
-  ```bash
-  docker inspect <ID>
-  ```
-- **Visualizar o histórico de uma imagem:**
-  ```bash
-  docker history <ID>
-  ```
-
-### Construindo e Executando Imagens
-- **Criar uma imagem personalizada:**
-  ```bash
-  docker build -t <nome-da-imagem>:<versão> .
-  ```
-- **Executar uma imagem em modo detached:**
-  ```bash
-  docker run -d -p <porta-host>:<porta-container> <nome-da-imagem>:<versão>
-  ```
-- **Exemplo:** Criar e executar uma imagem do Node.js
-  ```bash
-  docker build -t danielartine/app-node:1 .
-  docker run -d -p 8081:3000 danielartine/app-node:1.0
-  ```
-  Atualizando a imagem:
-  ```bash
-  docker build -t danielartine/app-node:1.1 .
-  docker run -d danielartine/app-node:1.1
-  ```
-  Outra versão:
-  ```bash
-  docker build -t danielartine/app-node:1.2 .
-  docker run -d -p 9090:6000 danielartine/app-node:1.2
-  ```
-
-### Gerenciando Portas e Networking
-- **Executar uma imagem em modo detached sem impactar o terminal:**
-  ```bash
-  docker run -d dockersamples/static-site
-  ```
-- **Verificar o mapeamento de portas do container:**
-  ```bash
-  docker port <ID>
-  ```
-
----
-
-## Navegação no Navegador
-- Acesse os containers em execução pelo navegador utilizando os seguintes endereços:
-  - `localhost:80`
-  - `http://localhost:49154`
-  - `localhost:8080`
-  - `localhost:8081`
-  - `localhost:9090`
-
----
-
-Este guia oferece uma visão geral dos principais comandos e links úteis para utilizar o Docker. Utilize-o como referência rápida ao trabalhar com containers e imagens!
-
