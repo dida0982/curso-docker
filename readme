@@ -1,0 +1,50 @@
+Links
+
+Página da documentação - https://docs.docker.com/
+Download e instalação  - https://docs.docker.com/get-started/get-docker/
+Get started          - https://docs.docker.com/get-started/workshop/
+Docker hub - https://hub.docker.com/r/dockersamples/static-site
+Imagem do Node no Docker Hub - https://hub.docker.com/_/node
+Documentação do Docker - https://docs.docker.com/reference/dockerfile/
+
+Codigos:
+
+docker run hello-world      => Para testar se o Docker realmente funciona.
+docker run ubuntu           =>
+docker pull ubuntu          =>
+docker ps                   => mostra quais containers estão em execução no momento   
+docker container ls -a      => visualizamos todos os containers, inclusive os que já não estão mais em execução.
+docker stop 'ID'            => interromper a execução
+docker start 'ID'           => reiniciar o container
+docker exec -it 'ID' bash   => podemos interagir com o container
+top                         => mostrará os processos em execução
+docker pause 'ID'           => pausamos o container
+docker unpause 'ID'         => despausar o container 
+docker rm 'ID'              => container removido
+docker run -d dockersamples/static-site => container baseado nesta imagem seja executado sem impactar nosso terminal. 
+docker rm 'ID' --force => interromper e remover o container
+docker run -d -P dockersamples/static-site 
+docker port 'ID'            =>  revela como está o mapeamento de portas do container em relação ao host.
+docker run -d -p 8080:80 dockersamples/static-site 
+docker images               =>  visualizar as imagens
+docker inspect 'ID'         => identificador do que queremos inspecionar.
+docker history 'ID'         => camadas da imagem
+docker build -t danielartine/app-node:1 . => buscar a imagem do node
+docker run -d –p 8081:3000 danielartine/app-node:1.0
+docker stop $(docker container ls -q)
+docker build –t danielartine/app-node:1.1 .
+docker run -d danielartine/app-node:1.1
+docker build –t danielartine/app-node:1.2 .
+docker run -d danielartine/app-node:1.2
+docker run –p 9090:6000 –d danielartine/app-node:1.2
+
+
+
+
+Navegador
+
+localhost:80
+http://localhost:49154
+localhost:8080
+localhost:8081
+localhost:9090
